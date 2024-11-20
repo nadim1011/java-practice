@@ -1,9 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 
-public class jvtst {
+public class game {
     public static void main(String[] args) {
       
 
@@ -11,7 +12,7 @@ public class jvtst {
             File inputFile = new File("inp.txt");
             Scanner fileScanner = new Scanner(inputFile);
             Scanner scanner = new Scanner(System.in);
-            //FileWriter writer = new FileWriter("result.txt",true);
+            
             int point=0;
             System.out.println("Enter your name:");
             String name= scanner.next();
@@ -69,6 +70,18 @@ public class jvtst {
                 //System.out.println();
             }
             System.out.println(point);
+            String fileName = "result.txt";
+            try {
+           
+            PrintWriter writer = new PrintWriter(fileName);
+            writer.write(name+" "+lev+" "+point+"\n");
+            writer.close();
+
+                }
+                catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
            
 
             // Close the scanner
